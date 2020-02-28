@@ -1,16 +1,18 @@
 import "./index.css";
 import "E:/Vue/project/lib/mui/css/mui.min.css";
+import "E:/Vue/project/lib/mui/css/icons-extra.css";
 import Vue from "vue";
 import VueRouter from "vue-router";
-import app from "./app.vue";
+import app from "./app.vue";      
 
 
-Vue.use(VueRouter);
+Vue.use(VueRouter);   
 
 var vm = new Vue({
     el:"#app",
     render: function(c){
         return c(app);
     }
+
 
 })
