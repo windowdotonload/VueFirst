@@ -7,10 +7,15 @@ import shopcar from "E:/Vue/project/components/tabbar/shopcar.vue";
 import search from "E:/Vue/project/components/tabbar/search.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
-import app from "./app.vue";      
+import VueResource from "vue-resource";
+import app from "./app.vue"; 
+import MintUI from "mint-ui";
+import "mint-ui/lib/style.css";
 
 
-Vue.use(VueRouter);   
+Vue.use(VueRouter);  
+Vue.use(MintUI); 
+Vue.use(VueResource);
 
 var router = new VueRouter({
     routes:[
