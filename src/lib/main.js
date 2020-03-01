@@ -19,6 +19,7 @@ Vue.use(VueResource);
 
 var router = new VueRouter({
     routes:[
+        {path:"/",component:home},
         {path:"/home",component:home},
         {path:"/vip",component:vip},
         {path:"/shopcar",component:shopcar},

@@ -1,9 +1,22 @@
 <template>
     <div>
         <h1>shpcar</h1>
+        
+        
+
     </div>
 </template>
 
-<script></script>
+<script>
+    export default {
+        data() {
+            return {
+                
+            }
+        },
+    }
+</script>
 
-<style scoped></style>
+<style scoped>
+    
+</style>
