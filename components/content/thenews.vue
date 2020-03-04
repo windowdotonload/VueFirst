@@ -12,7 +12,7 @@
                 </a>
             </li>
             <li class="mui-table-view-cell mui-media">
-                <a href="javascript:;">
+                <router-link to="/home/newsinfo/12"> 
                     <img class="mui-media-object mui-pull-left" src="https://dss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=11578103,2709364078&fm=58">
                     <div class="mui-media-body">
                         木屋
@@ -21,7 +21,7 @@
                             <span>浏览量：0</span> 
                         </p>
                     </div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media">
                 <a href="javascript:;">
