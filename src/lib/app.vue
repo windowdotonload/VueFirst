@@ -37,6 +37,10 @@
 </script>
 
 <style scoped>
+    *{
+        margin:0;
+        padding: 0;
+    }
     .v-enter{
         opacity: 0;
         transform: translateX(100%);
@@ -59,6 +63,7 @@
         overflow-x: hidden; 
     }
     .title{
+        z-index:999;
         width: 100%;
         height: 50px;
         background: skyblue;
@@ -66,6 +71,7 @@
         text-align: center;
         font-size: 18px;
         font-weight: bolder;
+        top: 0;
         position: fixed;
     }
     

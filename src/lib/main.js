@@ -8,17 +8,22 @@ import search from "E:/Vue/project/components/tabbar/search.vue";
 import thenews from "E:/Vue/project/components/content/thenews.vue";
 import newsinfo from "E:/Vue/project/components/content/newsinfo.vue";
 import pictures from "E:/Vue/project/components/content/pictures.vue";
+import pictureinfo from "E:/Vue/project/components/content/pictureinfo.vue"
 import Vue from "vue";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";
+import VuePreview from 'vue-preview';
 import app from "./app.vue"; 
 import MintUI from "mint-ui";
 import "mint-ui/lib/style.css";
 
 
+Vue.use(VuePreview);
 Vue.use(VueRouter);  
 Vue.use(MintUI); 
 Vue.use(VueResource);
+Vue.http.options.root = 'http://www.liulongbin.top:3005';
+Vue.http.options.emulateJSON = true;
 
 var router = new VueRouter({
     routes:[
@@ -30,6 +35,7 @@ var router = new VueRouter({
         {path:"/home/thenews",component:thenews},
         {path:"/home/newsinfo/:id",component:newsinfo},
         {path:"/home/pictures",component:pictures},
+        {path:"/home/photoinfo/:id",component:pictureinfo},
     ],
     linkActiveClass:"mui-active",
 });
