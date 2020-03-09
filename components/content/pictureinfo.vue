@@ -11,12 +11,16 @@
         <div class="thumbs">
             <vue-preview :slides="list"></vue-preview>
         </div>
+        
+        <div class="content" v-html="photoinfo.content"></div>
         <hr>
         <!-- 评论模块组件 -->
+        <comment></comment>
     </div>
 </template>
 
 <script>
+import comment from "E:/Vue/project/components/content/remark.vue";
     export default {
         data(){
             return{
@@ -24,6 +28,9 @@
                 list:[],
                 photoinfo:{},
             }
+        },
+        components:{
+            comment,
         },
         created() {
             this.getinfo();
@@ -55,24 +62,26 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .content{
+        background:whitesmoke;
+    }
     .contain{
         display: flex;
         justify-content: space-between;
     }
-    .thumbs .my-gallery {
+    .thumbs .my-gallery{
         display: flex;
         flex-wrap: wrap;
     }
-    .thumbs figure {
-        width: 100px;
-        height: 100px;
+    .thumbs figure{
+        width:100px;
+        height:100px;
         margin: 10px;
-        box-shadow: 0 0 8px #999;
     }
-    .thumbs figure img {
-        width: 100%;
-        height: 100%;
-    }
-    
+     .thumbs figure img{
+        width:100px;
+        height:100px;
+     }
 </style>
+

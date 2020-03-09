@@ -3,7 +3,7 @@
         <div id="slider" class="mui-slider">
             <div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" data-scroll="1">
                 <div class="mui-scroll" style="transform: translate3d(0px, 0px, 0px) translateZ(0px); transition-duration: 0ms; transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);">
-                    <a class="mui-control-item" v-for="(item,i) in list" 
+                    <a class="mui-control-item" v-for="(item,i) in list" :key="item.id"
                     @click="taggle(i)" :class="{ 'active' : isactive == i}">
                         {{item.title}}
                     </a>

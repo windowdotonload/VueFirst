@@ -15,6 +15,7 @@ import VueResource from "vue-resource";
 import VuePreview from 'vue-preview';
 import app from "./app.vue"; 
 import MintUI from "mint-ui";
+import moment from 'moment';
 import "mint-ui/lib/style.css";
 
 
@@ -24,6 +25,10 @@ Vue.use(MintUI);
 Vue.use(VueResource);
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
 Vue.http.options.emulateJSON = true;
+
+Vue.filter("dateformat",function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss"){
+    return moment(dataStr).format(pattern);
+})
 
 var router = new VueRouter({
     routes:[

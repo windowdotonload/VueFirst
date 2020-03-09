@@ -1,23 +1,22 @@
 <template>
-    <div>
-        <h5>remark</h5>
-        <textarea  cols="30" rows="10" v-model="msg"></textarea>
-        <button @click="getlist" type="button" class="mui-btn mui-btn-primary mui-btn-block">Block button</button>
+    <div class="remarkcon">
+        <h3>发表评论</h3>
+        <textarea placeholder="请输入" maxlength="120" v-model="msg"></textarea>
+        <button @click="input" type="button" class="mui-btn mui-btn-primary mui-btn-block">发表</button>
+        
         <div class="comment">
-            <!-- 暂无后端数据所以是把评论存储到localstorage中，并从中获取数据 -->
             <ul>
-                <li v-for="item in list">
+                <li v-for="(item,i) in list" :key="item.id">
                     <div class="c-content" >
-                        the user NO.1 says: {{ item.user}}
+                        第 {{i+1}} 楼用户{{item.user_name}}
                        </div> 
                        <div class="c-content-1" > 
-                        the content here {{ item.content}}
+                        {{ item.content =="undefined"?"此用户什么都没说":item.content}}
                        </div>
                 </li>
             </ul>
-           
         </div>
-        <button type="button" class="mui-btn mui-btn-danger mui-btn-block mui-btn-outlined">Block button</button>
+        <button @click="getmore" type="button" class="mui-btn mui-btn-danger mui-btn-block mui-btn-outlined">获取更多消息</button>
     </div>
 </template>
 
@@ -26,29 +25,56 @@
         data(){
             return {
                 msg:"",
+                page:1,
                 list:[],
             }
         },
         created(){
-            this.getlist();
+            this.getdata();
         },
+        props:["id"],
         methods:{
-            getlist(){
-                var newdata = {user:this.msg,content:this.msg};
-                var list1 = JSON.parse(localStorage.getItem("item") || "[]");
-                list1.unshift(newdata);
-                localStorage.setItem("item",JSON.stringify(list1));
-                this.msg = "";
-                this.list = list1;
+            getmore(){
+                this.page++;
+                this.getdata();
+            },
+            getdata(){
+                this.$http.get("api/getcomments/"+this.id+"?page="+this.page).then(
+                    res => {
+                        if(res.body.status === 0){
+                            this.list = this.list.concat(res.body.message);
+                        }
+                    }
+                )
+            },
+            input(){
+                this.$http.post("api/postcomment/"+this.$route.params.id,{
+                    content:this.msg,
+                }).then(
+                    res => {
+                        if(res.body.status == 0){
+                            var cmt = {
+                            user_name: "匿名用户",
+                            add_time: Date.now(),
+                            content: this.msg.trim()
+                            };
+                            this.list.unshift(cmt);
+                            this.msg = "";
+                        }
+                    }
+                )
             }
         }
     }
 </script>
 
-<style scoped>
+<style scoped>  
+    .remarkcon{
+        margin-bottom: 80px;
+    }
     .comment{
-        margin: 10px;
         border: 1px solid black;
+        margin: 10px;
         padding: 10px;
     }
     .c-content{
