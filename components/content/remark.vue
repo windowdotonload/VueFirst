@@ -70,6 +70,7 @@
 
 <style scoped>  
     .remarkcon{
+        margin-top: 20px;
         margin-bottom: 80px;
     }
     .comment{

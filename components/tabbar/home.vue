@@ -60,7 +60,8 @@
         height: 200px;
     }
     .mint-swipe-item:nth-child(1){
-        background: red;
+        background: url("http://pics3.baidu.com/feed/c995d143ad4bd113bad526a475a7f5094bfb051e.jpeg?token=0834baa55a27e05ab36db92063bc2d4a&s=61D12A641D5E365F4BCC9DA803001093");
+        background-size: 100% 100%;
     }
     .mint-swipe-item:nth-child(2){
         background: blue;

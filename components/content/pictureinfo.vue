@@ -2,8 +2,8 @@
     <div>
         <h1>{{photoinfo.title}}</h1>
         <div class="contain">
-            <span>{{photoinfo.add_time}}</span>
-            <span>{{photoinfo.click}}</span>
+            <span>{{photoinfo.add_time | dateformat}}</span>
+            <span>click：{{photoinfo.click}}</span>
         </div>
         
         <hr>
@@ -11,11 +11,11 @@
         <div class="thumbs">
             <vue-preview :slides="list"></vue-preview>
         </div>
-        
+
         <div class="content" v-html="photoinfo.content"></div>
         <hr>
         <!-- 评论模块组件 -->
-        <comment></comment>
+        <comment :id="id"></comment>
     </div>
 </template>
 
