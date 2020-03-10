@@ -8,7 +8,8 @@ import search from "E:/Vue/project/components/tabbar/search.vue";
 import thenews from "E:/Vue/project/components/content/thenews.vue";
 import newsinfo from "E:/Vue/project/components/content/newsinfo.vue";
 import pictures from "E:/Vue/project/components/content/pictures.vue";
-import pictureinfo from "E:/Vue/project/components/content/pictureinfo.vue"
+import pictureinfo from "E:/Vue/project/components/content/pictureinfo.vue";
+import goods from "E:/Vue/project/components/content/goods.vue"
 import Vue from "vue";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";
@@ -41,6 +42,7 @@ var router = new VueRouter({
         {path:"/home/newsinfo/:id",component:newsinfo},
         {path:"/home/pictures",component:pictures},
         {path:"/home/photoinfo/:id",component:pictureinfo},
+        {path:"/home/goods",component:goods},
     ],
     linkActiveClass:"mui-active",
 });

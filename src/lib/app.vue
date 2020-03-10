@@ -1,7 +1,10 @@
 <template>
     <div class="continer">
         <!-- 顶部 -->
-        <div class="title">applicationdemo</div>
+        <div class="title">
+            <span @click="goback">返 回</span>
+            applicationdemo
+        </div>
         <!-- 主视图 -->
             <div class="content">
                 <transition>
@@ -33,7 +36,14 @@
 </template>
 
 <script>
-
+export default {
+    methods:{
+        goback(){
+            this.$router.go(-1);
+            console.log(this.$router.go);
+        }
+    }
+}
 </script>
 
 <style scoped>
@@ -74,5 +84,11 @@
         top: 0;
         position: fixed;
     }
-    
+    .title span{
+        position: absolute;
+        left: 0;
+        height: 50px;
+        line-height: 50px;
+        color:white;
+    }
 </style>
