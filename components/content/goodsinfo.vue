@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div class="mui-card">
 			<div class="mui-card-content">
 				<div class="mui-card-content-inner">
@@ -45,8 +44,8 @@
                 <p>上架时间：{{ goodsinfo.add_time | dateformat }}</p>
                 </div>
             </div>
-            <router-link to="/home/intro" tag="button" type="button" class="mui-btn mui-btn-primary mui-btn-block">图文介绍</router-link>
-            <router-link to="/home/phonerem" tag="button" style="margin-bottom:80px" type="button" class="mui-btn mui-btn-warning mui-btn-block">商品评价</router-link>
+            <router-link :to="'/home/intro/'+id" tag="button" type="button" class="mui-btn mui-btn-primary mui-btn-block">图文介绍</router-link>
+            <router-link :to="'/home/phonerem/'+id" tag="button" style="margin-bottom:80px" type="button" class="mui-btn mui-btn-warning mui-btn-block">商品评价</router-link>
         </div>
     </div>
 </template>
@@ -90,7 +89,11 @@ export default {
 </script>
 
 <style scoped>
+    img{
+        height:100%;
+    }
     .mint-swipe{
         height: 200px;
+        text-align: center;
     }
 </style>

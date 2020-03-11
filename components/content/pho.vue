@@ -1,12 +1,15 @@
 <template>
     <div>
-        <h1>pho</h1>
+        <remark :id="$route.params.id"></remark>
     </div>
 </template>
 
 <script>
+import remark from "E:/Vue/project/components/content/remark.vue";
 export default {
-    
+    components:{
+        remark,
+    }
 }
 </script>
 

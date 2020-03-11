@@ -48,8 +48,8 @@ var router = new VueRouter({
         {path:"/home/photoinfo/:id",component:pictureinfo},
         {path:"/home/goods",component:goods},
         {path:"/home/goodsinfo/:id",component:goodsinfo},
-        {path:"/home/intro",component:intro},
-        {path:"/home/phonerem",component:pho}
+        {path:"/home/intro/:id",component:intro},
+        {path:"/home/phonerem/:id",component:pho}
     ],
     linkActiveClass:"mui-active",
 });

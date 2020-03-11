@@ -49,6 +49,7 @@ export default {
     *{
         margin:0;
         padding: 0;
+        touch-action: none;
     }
     .v-enter{
         opacity: 0;
