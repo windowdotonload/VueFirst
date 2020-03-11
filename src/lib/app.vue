@@ -40,7 +40,6 @@ export default {
     methods:{
         goback(){
             this.$router.go(-1);
-            console.log(this.$router.go);
         }
     }
 }

@@ -1,5 +1,6 @@
 import "./index.css";
 import "E:/Vue/project/lib/mui/css/mui.min.css";
+import "E:/Vue/project/lib/mui/js/mui.min.js";
 import "E:/Vue/project/lib/mui/css/icons-extra.css";
 import home from "E:/Vue/project/components/tabbar/home.vue";
 import vip from "E:/Vue/project/components/tabbar/vip.vue";
@@ -9,7 +10,10 @@ import thenews from "E:/Vue/project/components/content/thenews.vue";
 import newsinfo from "E:/Vue/project/components/content/newsinfo.vue";
 import pictures from "E:/Vue/project/components/content/pictures.vue";
 import pictureinfo from "E:/Vue/project/components/content/pictureinfo.vue";
-import goods from "E:/Vue/project/components/content/goods.vue"
+import goods from "E:/Vue/project/components/content/goods.vue";
+import goodsinfo from "E:/Vue/project/components/content/goodsinfo.vue";
+import intro from "E:/Vue/project/components/content/intro.vue";
+import pho from "E:/Vue/project/components/content/pho.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";
@@ -43,6 +47,9 @@ var router = new VueRouter({
         {path:"/home/pictures",component:pictures},
         {path:"/home/photoinfo/:id",component:pictureinfo},
         {path:"/home/goods",component:goods},
+        {path:"/home/goodsinfo/:id",component:goodsinfo},
+        {path:"/home/intro",component:intro},
+        {path:"/home/phonerem",component:pho}
     ],
     linkActiveClass:"mui-active",
 });
