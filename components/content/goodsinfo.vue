@@ -27,7 +27,7 @@
 				</div>
 			</div>
             <div style="margin-left:15px">购买数量：
-                <div style="margin-bottom:15px" class="mui-numbox" data-numbox-min="1" data-numbox-max="9">
+                <div style="margin-bottom:15px" class="mui-numbox" data-numbox-min="1">
 					<button class="mui-btn mui-btn-numbox-minus" type="button" disabled="">-</button>
 					<input id="test" class="mui-input-numbox" type="number" value="1">
 					<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
@@ -66,6 +66,7 @@ export default {
             lunbo:[],
             goodsinfo:{},
             flag:false,
+            max:0,
         }
     },
     created(){
@@ -88,6 +89,7 @@ export default {
                 res => {
                     if(res.body.status == 0){
                         this.goodsinfo = res.body.message[0];
+                        this.max = res.body.message[0].stock_quantity;
                     }   
                 }
             )
@@ -98,7 +100,7 @@ export default {
         },
 
         before(el){
-             el.style.transform = "translate(0, 0)";
+                el.style.transform = "translate(0, 0)";
         },
         enter(el,done){
             const ball = this.$refs.ball.getBoundingClientRect();
@@ -108,14 +110,18 @@ export default {
             const y = car.top - ball.top + 5;
 
             el.style.transform = `translate(${x}px,${y}px)`;
-            el.style.transition = "all 1s cubic-bezier(.4,-0.3,1,.68)"
-
+            el.style.transition = "all 0.5s ease";
 
             done();
         },
         after(){
             this.flag = !this.flag;
         },
+    },
+    watch: {
+        max: function(n,o){
+            mui(".mui-numbox").numbox().setOption("max", n);
+        }
     },
 }
 </script>
