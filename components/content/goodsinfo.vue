@@ -1,5 +1,12 @@
 <template>
     <div>
+        <transition
+        @before-enter="before"
+        @enter="enter"
+        @after-enter="after">
+            <div class="ball" v-show="flag" ref="ball"></div>
+        </transition>
+
         <div class="mui-card">
 			<div class="mui-card-content">
 				<div class="mui-card-content-inner">
@@ -29,7 +36,7 @@
                 <div class="mui-btn mui-btn-primary">
 					立即购买
 				</div>
-                <button type="button" class="mui-btn mui-btn-danger">
+                <button @click="add" type="button" class="mui-btn mui-btn-danger">
 					加入购物车
 				</button>
             </div>
@@ -58,6 +65,7 @@ export default {
             id:this.$route.params.id,
             lunbo:[],
             goodsinfo:{},
+            flag:false,
         }
     },
     created(){
@@ -83,8 +91,32 @@ export default {
                     }   
                 }
             )
-        }
-    }
+        },
+
+        add(){
+            this.flag = !this.flag;
+        },
+
+        before(el){
+             el.style.transform = "translate(0, 0)";
+        },
+        enter(el,done){
+            const ball = this.$refs.ball.getBoundingClientRect();
+            const car = document.getElementById("shopcar").getBoundingClientRect();
+
+            const x = car.left - ball.left + 38;
+            const y = car.top - ball.top + 5;
+
+            el.style.transform = `translate(${x}px,${y}px)`;
+            el.style.transition = "all 1s cubic-bezier(.4,-0.3,1,.68)"
+
+
+            done();
+        },
+        after(){
+            this.flag = !this.flag;
+        },
+    },
 }
 </script>
 
@@ -95,5 +127,15 @@ export default {
     .mint-swipe{
         height: 200px;
         text-align: center;
+    }
+    .ball{
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background:red;
+        border-radius: 50%;
+        z-index: 999;
+        left:150px;
+        top:406px;
     }
 </style>
