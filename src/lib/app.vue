@@ -23,7 +23,7 @@
             </router-link>
 			<router-link class="mui-tab-item" to="/shopcar">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-                    <span class="mui-badge">0</span>
+                    <span class="mui-badge">{{ this.$store.getters.getall}}</span>
                 </span>
 				<span class="mui-tab-label" id="shopcar">购物车</span>
 			</router-link>

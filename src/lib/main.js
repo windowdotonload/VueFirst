@@ -21,6 +21,7 @@ import VuePreview from 'vue-preview';
 import app from "./app.vue"; 
 import MintUI from "mint-ui";
 import moment from 'moment';
+import Vuex from 'vuex';
 import "mint-ui/lib/style.css";
 
 
@@ -28,6 +29,7 @@ Vue.use(VuePreview);
 Vue.use(VueRouter);  
 Vue.use(MintUI); 
 Vue.use(VueResource);
+Vue.use(Vuex);
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
 Vue.http.options.emulateJSON = true;
 
@@ -54,10 +56,45 @@ var router = new VueRouter({
     linkActiveClass:"mui-active",
 });
 
+var car = JSON.parse(localStorage.getItem("car") || '[]');
+const store = new Vuex.Store({
+    state:{
+        car:car,
+    },
+    mutations:{
+        addtocar(state,goodsinfo){
+            var flag = false;
+
+            state.car.some(item => {
+                if(item.id == goodsinfo.id){
+                    item.count +=parseInt(goodsinfo.count);
+                    flag = true;
+                    return true;
+                }
+            })
+
+            if(flag == false){
+                state.car.push(goodsinfo);
+            }
+            localStorage.setItem("car",JSON.stringify(state.car));
+        } 
+    },
+    getters:{
+        getall(state){
+            var c = 0;
+            state.car.forEach(item => {
+                c += item.count;
+            })
+            return c;
+        }
+    }
+});
+
 var vm = new Vue({
     el:"#app",
     render: function(c){
         return c(app);
     }, 
     router,
+    store,
 })

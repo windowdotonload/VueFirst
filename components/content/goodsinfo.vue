@@ -3,7 +3,7 @@
         <transition
         @before-enter="before"
         @enter="enter"
-        @after-enter="after">
+        @after-enter="after" mode="out-in">
             <div class="ball" v-show="flag" ref="ball"></div>
         </transition>
 
@@ -23,13 +23,13 @@
 			<div class="mui-card-header">{{ goodsinfo.title }}</div>
 			<div class="mui-card-content">
 				<div class="mui-card-content-inner">
-					市场价：<del>￥{{ goodsinfo.market_price }}</del>&nbsp;&nbsp;销售价：<span class="now_price">￥{{ goodsinfo.sell_price }}</span>
+					市场价：<del>￥{{ goodsinfo.market_price }}</del>&nbsp;&nbsp;销售价：<span class="now_price" style="color:red;font-weight:bloder;font-size:20px">￥{{ goodsinfo.sell_price }}</span>
 				</div>
 			</div>
             <div style="margin-left:15px">购买数量：
                 <div style="margin-bottom:15px" class="mui-numbox" data-numbox-min="1">
 					<button class="mui-btn mui-btn-numbox-minus" type="button" disabled="">-</button>
-					<input id="test" class="mui-input-numbox" type="number" value="1">
+					<input id="test" class="mui-input-numbox" type="number" value="1" ref="num" @change="addam">
 					<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 				</div>
                 <br>
@@ -67,6 +67,7 @@ export default {
             goodsinfo:{},
             flag:false,
             max:0,
+            selected:1,
         }
     },
     created(){
@@ -94,9 +95,20 @@ export default {
                 }
             )
         },
-
+        addam(){
+            this.selected = this.$refs.num.value;
+        },
         add(){
             this.flag = !this.flag;
+
+            var goodsinfo = {
+                id:this.id,
+                count:this.selected,
+                price: this.goodsinfo.sell_price,
+                choose:true,
+            }
+
+            this.$store.commit("addtocar",goodsinfo);
         },
 
         before(el){
