@@ -1,6 +1,5 @@
 import "./index.css";
 import "E:/Vue/project/lib/mui/css/mui.min.css";
-import "E:/Vue/project/lib/mui/js/mui.min.js";
 import "E:/Vue/project/lib/mui/css/icons-extra.css";
 import home from "E:/Vue/project/components/tabbar/home.vue";
 import vip from "E:/Vue/project/components/tabbar/vip.vue";
@@ -23,6 +22,7 @@ import MintUI from "mint-ui";
 import moment from 'moment';
 import Vuex from 'vuex';
 import "mint-ui/lib/style.css";
+
 
 
 Vue.use(VuePreview);
@@ -67,7 +67,7 @@ const store = new Vuex.Store({
 
             state.car.some(item => {
                 if(item.id == goodsinfo.id){
-                    item.count +=parseInt(goodsinfo.count);
+                    item.count += parseInt(goodsinfo.count);
                     flag = true;
                     return true;
                 }
@@ -77,7 +77,16 @@ const store = new Vuex.Store({
                 state.car.push(goodsinfo);
             }
             localStorage.setItem("car",JSON.stringify(state.car));
-        } 
+        },
+        update(state,goodsinfo){
+            state.car.some(item => {
+                if(item.id == goodsinfo.id){
+                    item.count = parseInt(goodsinfo.count);
+                    return true;
+                }
+            })
+            localStorage.setItem("car",JSON.stringify(state.car));
+        }
     },
     getters:{
         getall(state){
@@ -86,7 +95,15 @@ const store = new Vuex.Store({
                 c += item.count;
             })
             return c;
-        }
+        },
+        getcount(state){
+            var o = {};
+            state.car.forEach(item => {
+                o[item.id] = item.count;
+            })
+            return o;
+        },
+        
     }
 });
 

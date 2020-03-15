@@ -71,7 +71,7 @@ export default {
         }
     },
     created(){
-        mui(".mui-numbox").numbox(),
+        mui(".mui-numbox").numbox();
         this.getlunbo();
         this.getgoodsinfo();
     },
