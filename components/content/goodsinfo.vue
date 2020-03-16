@@ -97,6 +97,8 @@ export default {
         },
         addam(){
             this.selected = this.$refs.num.value;
+            // console.log("goodsinfo refs  "+this.$refs);
+            // console.dir(this.$refs);
         },
         add(){
             this.flag = !this.flag;

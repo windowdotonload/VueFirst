@@ -6,12 +6,12 @@
 					<div class="mui-card-content-inner">
 						<mt-switch v-model="value"></mt-switch>
                         <img :src="item.thumb_path">
-                        <div class="content">
+                        <div class="content"> 
                             <h1 style="font-size:13px">{{item.title}}</h1>
                             <span style="color:red;font-size:20px">￥{{ item.sell_price }}</span>
                             <div style="margin-bottom:15px" class="mui-numbox" data-numbox-min="1">
                                 <button class="mui-btn mui-btn-numbox-minus" type="button" >-</button>
-                                <input ref="numbox" @change="update(item.id)" id="test" class="mui-input-numbox" type="number" :value="$store.getters.getcount[item.id]">
+                                <input ref="num" @change="update(item.id)" id="test" class="mui-input-numbox" type="number" :value="$store.getters.getcount[item.id]">
                                 <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
                             </div>
                             <a style="position:absolute;right:15px;bottom:0" @click.prevent>删除</a>
@@ -46,8 +46,20 @@ export default {
         }
     },
     created(){
-        mui(".mui-numbox").numbox();
         this.getlist();
+    },
+    // mounted(){
+    //     mui(".mui-numbox").numbox();
+    //     console.log("dou         "+document.getElementsByClassName("mui-numbox")[0]);
+    //     var list = [];
+    //     list = this.$refs.num;
+    //     console.log("list    "+list);
+    //     console.log(this.$refs);
+    // },
+    updated(){
+        mui(".mui-numbox").numbox();
+        // console.log("update     "+this.$refs.num);
+        // console.dir(this.$refs.num[0].value);
     },
     methods:{
         getlist(){
@@ -65,15 +77,19 @@ export default {
                         }
                     }
                 )
-            }
+            } 
         },
         update(i){
-            var goodsinfo = {
+            this.$nextTick(function(){
+                var goodsinfo = {
                 id:i,
-                count:this.$refs.numbox.value,
-            };
-            console.log(parseInt(goodsinfo.count)+"---"+goodsinfo.id);
-            this.$store.commit("update",goodsinfo);
+                count:this.$refs.num[0].value,
+                };
+                console.log(this.count);
+                // console.log(parseInt(goodsinfo.count)+"---"+goodsinfo.id);
+                this.$store.commit("update",goodsinfo);
+                console.dir(this.$refs);
+            })   
         }
     }
 }
