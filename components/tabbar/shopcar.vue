@@ -80,16 +80,14 @@ export default {
             } 
         },
         update(i){
-            this.$nextTick(function(){
-                var goodsinfo = {
-                id:i,
-                count:this.$refs.num[0].value,
-                };
-                console.log(this.count);
-                // console.log(parseInt(goodsinfo.count)+"---"+goodsinfo.id);
-                this.$store.commit("update",goodsinfo);
-                console.dir(this.$refs);
-            })   
+            var goodsinfo = {
+            id:i,
+            count:this.$refs.num[0].value,
+            };
+            console.log(this.count);
+            // console.log(parseInt(goodsinfo.count)+"---"+goodsinfo.id);
+            this.$store.commit("update",goodsinfo);
+            console.dir(this.$refs);    
         }
     }
 }
