@@ -61,7 +61,7 @@ const store = new Vuex.Store({
     state:{
         car:car,
     },
-    mutations:{
+    mutations:{   
         addtocar(state,goodsinfo){
             var flag = false;
 
