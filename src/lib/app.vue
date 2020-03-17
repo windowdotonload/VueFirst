@@ -2,7 +2,7 @@
     <div class="continer">
         <!-- 顶部 -->
         <div class="title">
-            <span @click="goback">返 回</span>
+            <span @click="goback" v-show="flag">返 回</span>
             applicationdemo
         </div>
         <!-- 主视图 -->
@@ -37,9 +37,26 @@
 
 <script>
 export default {
+    data(){
+        return {
+            flag:true,
+        }
+    },
+    created() {
+        this.flag = this.$route.path === "/home" ? false : true;
+    },
     methods:{
         goback(){
             this.$router.go(-1);
+        }
+    },
+    watch:{
+        "$route.path":function(n){
+            if (n === "/home") {
+                this.flag = false;
+            } else {
+                this.flag = true;
+            }
         }
     }
 }

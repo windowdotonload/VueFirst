@@ -101,7 +101,7 @@ export default {
             // console.dir(this.$refs);
         },
         add(){
-            this.flag = !this.flag;
+            this.flag = !this.flag;      //控制小球的显示
 
             var goodsinfo = {
                 id:this.id,

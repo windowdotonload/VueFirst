@@ -39,7 +39,7 @@ Vue.filter("dateformat",function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss"){
 
 var router = new VueRouter({
     routes:[
-        {path:"/",component:home},
+        {path:"/",redirect:"/home"},
         {path:"/home",component:home},
         {path:"/vip",component:vip},
         {path:"/shopcar",component:shopcar},
@@ -86,9 +86,27 @@ const store = new Vuex.Store({
                 }
             })
             localStorage.setItem("car",JSON.stringify(state.car));
+        },
+        remove(state,id){
+            state.car.some((item,i) => {
+                if(item.id == id){
+                    state.car.splice(i,1);
+                    return true;
+                }
+            })
+            
+            localStorage.setItem("car",JSON.stringify(state.car));
+        },
+        updatechoose(state,info){
+            state.car.some(item => {
+                if(item.id == info.id){
+                    item.choose = info.choose;
+                }
+            })
+            localStorage.setItem('car', JSON.stringify(state.car));
         }
     },
-    getters:{
+    getters:{         //getters只涉及取数据，而不进行修改
         getall(state){
             var c = 0;
             state.car.forEach(item => {
@@ -103,7 +121,26 @@ const store = new Vuex.Store({
             })
             return o;
         },
-        
+        getifchoose(state){
+            var o = {};
+            state.car.forEach(item => {
+                o[item.id] = item.choose;
+            })
+            return o;
+        },
+        getallcount(state){
+            var o = {
+                count:0,
+                price:0,
+            }
+            state.car.forEach(item => {
+                if(item.choose == true){
+                    o["count"] += item.count;
+                    o.price += item.price*item.count;
+                }
+            })
+            return o;
+        }
     }
 });
 
