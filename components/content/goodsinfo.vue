@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="goodscontiner">
         <transition
         @before-enter="before"
         @enter="enter"
@@ -141,6 +141,11 @@ export default {
 </script>
 
 <style scoped>
+    .goodscontiner{
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
     img{
         height:100%;
     }

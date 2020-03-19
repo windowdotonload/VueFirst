@@ -36,6 +36,7 @@
 </template>
 
 <script>
+// import mui from "E:/Vue/project/lib/mui/js/mui.min.js";
 export default {
     data(){
         return {
@@ -44,6 +45,7 @@ export default {
     },
     created() {
         this.flag = this.$route.path === "/home" ? false : true;
+        // mui('.mui-bar-tab').on('tap','a',function(){document.location.href=this.href;});
     },
     methods:{
         goback(){
@@ -66,7 +68,6 @@ export default {
     *{
         margin:0;
         padding: 0;
-        touch-action: none;
     }
     .v-enter{
         opacity: 0;
@@ -84,6 +85,9 @@ export default {
 
     .continer{
         border: 1px solid transparent;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
     .content{
         margin-top: 50px;
