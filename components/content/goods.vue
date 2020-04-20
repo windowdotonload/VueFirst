@@ -1,6 +1,6 @@
 <template>
     <div class="continer">
-        <router-link :to="'/home/goodsinfo/'+item.id" class="item" v-for="item in goodslist" :key="item.id" tag="div">
+        <router-link :to="'/home/goodsinfo/'+item.id+'/'+item.stock_quantity" class="item" v-for="item in goodslist" :key="item.id" tag="div">
             <img :src="item.img_url" >
             <div>
                 <h3>{{ item.title }}</h3>

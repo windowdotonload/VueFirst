@@ -49,7 +49,7 @@ var router = new VueRouter({
         {path:"/home/pictures",component:pictures},
         {path:"/home/photoinfo/:id",component:pictureinfo},
         {path:"/home/goods",component:goods},
-        {path:"/home/goodsinfo/:id",component:goodsinfo},
+        {path:"/home/goodsinfo/:id/:c",component:goodsinfo},
         {path:"/home/intro/:id",component:intro},
         {path:"/home/phonerem/:id",component:pho}
     ],

@@ -94,6 +94,8 @@ export default {
                     }   
                 }
             )
+            // console.log('thisis')
+            // console.log(this.$route.params.c)
         },
         addam(){
             this.selected = this.$refs.num.value;
